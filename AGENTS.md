@@ -62,7 +62,7 @@ These come from where the output runs. Do not relax them.
    icon next to the others on both cards. An icon is not done until someone
    has looked at it rendered; path data that seems right often is not.
 
-Likely useful next: file, clock, alert, globe, mail, terminal, chart.
+Likely useful next: clock, alert, globe, mail, terminal, chart.
 
 ## Adding a component
 

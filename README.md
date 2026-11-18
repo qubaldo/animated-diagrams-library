@@ -90,6 +90,7 @@ pill sits in the middle of its link, so labels stay readable.
 `router` `firewall` `lb` `gateway` `antenna`
 `pod` `container` `namespace` `config` `secret` `queue` `volume`
 `package` `tag` `rollback` `lock` `key` `certificate`
+`repo` `shield` `file` `api` `transfer` `send` `wifi`
 
 The icons are generic line drawings, not vendor logos.
 
