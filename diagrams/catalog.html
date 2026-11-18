@@ -21,6 +21,27 @@
     <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-ci-completed"/></svg><b>ci-completed</b></div>
     <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-laptop"/></svg><b>laptop</b></div>
     <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-desktop"/></svg><b>desktop</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-router"/></svg><b>router</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-firewall"/></svg><b>firewall</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-lb"/></svg><b>lb</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-gateway"/></svg><b>gateway</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-antenna"/></svg><b>antenna</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-phone"/></svg><b>phone</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-tablet"/></svg><b>tablet</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-sensor"/></svg><b>sensor</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-pod"/></svg><b>pod</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-container"/></svg><b>container</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-namespace"/></svg><b>namespace</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-config"/></svg><b>config</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-secret"/></svg><b>secret</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-queue"/></svg><b>queue</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-volume"/></svg><b>volume</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-package"/></svg><b>package</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-tag"/></svg><b>tag</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-rollback"/></svg><b>rollback</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-lock"/></svg><b>lock</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-key"/></svg><b>key</b></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-certificate"/></svg><b>certificate</b></div>
   </div>
 </div>
 
@@ -55,4 +76,39 @@
     </div>
   </div>
   <p class="dd-note">dd-note: a caption under the diagram.</p>
+</div>
+
+<div class="dd">
+  <p class="dd-title">Vertical flow (dd-col)</p>
+  <div class="dd-col">
+    <div class="dd-node"><svg class="dd-ico"><use href="#dd-i-ci"/></svg><b>Pipeline</b><small>builds the chart</small></div>
+    <div class="dd-link"><i></i></div>
+    <div class="dd-node" style="--d:1.5s"><svg class="dd-ico"><use href="#dd-i-package"/></svg><b>Package</b><small>published artifact</small></div>
+    <div class="dd-link" style="--d:1.5s"><i>v1.5.0</i></div>
+    <div class="dd-node" style="--d:3s"><svg class="dd-ico"><use href="#dd-i-k8s"/></svg><b>Cluster</b><small>runs the release</small></div>
+    <div class="dd-link dd-wireless"></div>
+    <div class="dd-node dd-amber dd-still"><svg class="dd-ico"><use href="#dd-i-ap"/></svg><b>Access point</b><small>dd-wireless link</small></div>
+  </div>
+</div>
+
+<div class="dd dd-light">
+  <p class="dd-title">Branch, merge and legend</p>
+  <div class="dd-row">
+    <div class="dd-node"><svg class="dd-ico"><use href="#dd-i-lb"/></svg><b>dd-branch</b><small>fans out</small></div>
+    <div class="dd-link"><i></i></div>
+    <div class="dd-branch dd-merge">
+      <div class="dd-row"><div class="dd-link" style="--d:1.5s"><i></i></div><div class="dd-node dd-green" style="--d:3s"><svg class="dd-ico"><use href="#dd-i-server"/></svg><b>Server 1</b></div><div class="dd-link"></div></div>
+      <div class="dd-row"><div class="dd-link" style="--d:1.5s"><i></i></div><div class="dd-node dd-green" style="--d:3s"><svg class="dd-ico"><use href="#dd-i-server"/></svg><b>Server 2</b></div><div class="dd-link"></div></div>
+      <div class="dd-row"><div class="dd-link dd-dashed"></div><div class="dd-node dd-red dd-still"><svg class="dd-ico"><use href="#dd-i-server"/></svg><b>Standby</b><small>dashed links</small></div><div class="dd-link dd-dashed"></div></div>
+    </div>
+    <div class="dd-link"></div>
+    <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-db"/></svg><b>dd-merge</b><small>fans in</small></div>
+  </div>
+  <div class="dd-legend">
+    <span class="dd-key">dd-key</span>
+    <span class="dd-key dd-green">dd-key dd-green</span>
+    <span class="dd-key dd-red">dd-key dd-red</span>
+    <span class="dd-key-wired">dd-key-wired</span>
+    <span class="dd-key-wireless">dd-key-wireless</span>
+  </div>
 </div>

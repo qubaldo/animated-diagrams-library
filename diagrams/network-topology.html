@@ -1,0 +1,31 @@
+<!-- Network topology: controller -> switch -> two access points -> wireless clients -->
+<div class="dd">
+  <p class="dd-title">Access points and their clients</p>
+  <div class="dd-row">
+    <div class="dd-node dd-violet"><svg class="dd-ico"><use href="#dd-i-controller"/></svg><b>Controller</b><small>manages the APs</small></div>
+    <div class="dd-link"><i>config</i></div>
+    <div class="dd-node" style="--d:1.5s"><svg class="dd-ico"><use href="#dd-i-switch"/></svg><b>Switch</b><small>wired uplink</small></div>
+    <div class="dd-link" style="--d:1.5s"><i></i></div>
+    <div class="dd-branch">
+      <div class="dd-row">
+        <div class="dd-link" style="--d:3s"><i></i></div>
+        <div class="dd-node dd-amber" style="--d:4.5s"><svg class="dd-ico"><use href="#dd-i-ap"/></svg><b>Access point 1</b></div>
+        <div class="dd-link dd-wireless"></div>
+        <div class="dd-node dd-green dd-still"><svg class="dd-ico"><use href="#dd-i-laptop"/></svg><b>Laptop</b><small>wireless client</small></div>
+      </div>
+      <div class="dd-row">
+        <div class="dd-link" style="--d:3s"><i></i></div>
+        <div class="dd-node dd-amber" style="--d:4.5s"><svg class="dd-ico"><use href="#dd-i-ap"/></svg><b>Access point 2</b></div>
+        <div class="dd-link dd-wireless"></div>
+        <div class="dd-node dd-green dd-still"><svg class="dd-ico"><use href="#dd-i-phone"/></svg><b>Phone</b><small>wireless client</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="dd-legend">
+    <span class="dd-key dd-violet">Controller</span>
+    <span class="dd-key dd-amber">Access point</span>
+    <span class="dd-key dd-green">Client</span>
+    <span class="dd-key-wired">Wired</span>
+    <span class="dd-key-wireless">Wireless</span>
+  </div>
+</div>

@@ -59,8 +59,7 @@ These come from where the output runs. Do not relax them.
    icon next to the others on both cards. An icon is not done until someone
    has looked at it rendered; path data that seems right often is not.
 
-Likely useful next: router, phone, queue, lock, key, load balancer,
-gateway, sensor, antenna, file, clock.
+Likely useful next: file, clock, alert, globe, mail, terminal, chart.
 
 ## Adding a component
 
@@ -74,7 +73,8 @@ gateway, sensor, antenna, file, clock.
 ## Adding a diagram
 
 1. Create `diagrams/NAME.html` with a single `<div class="dd">` root. Start
-   from `diagrams/version-flow.html`.
+   from `diagrams/version-flow.html`, or `diagrams/network-topology.html` for
+   branching.
 2. Reference icons with `<svg class="dd-ico"><use href="#dd-i-NAME"/></svg>`.
 3. Sequence the animation with `style="--d:..."` on nodes and links. Step n
    fires at n x 1.5s when `--t` is the default 6s.

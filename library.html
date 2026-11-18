@@ -5,27 +5,46 @@
 .dd-amber{--c:#f59e0b}.dd-green{--c:#22c55e}.dd-violet{--c:#a78bfa}.dd-red{--c:#f87171}
 .dd-light .dd-amber{--c:#b45309}.dd-light .dd-green{--c:#15803d}.dd-light .dd-violet{--c:#7c3aed}.dd-light .dd-red{--c:#dc2626}
 .dd-row{display:flex;align-items:center;min-width:max-content}
-.dd-node{flex:0 0 140px;box-sizing:border-box;padding:14px 8px;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--panel);animation:dd-pulse var(--t) var(--d,0s) infinite}
+.dd-node{flex:none;width:140px;box-sizing:border-box;padding:14px 8px;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--panel);animation:dd-pulse var(--t) var(--d,0s) infinite}
 .dd-node b{display:block}
 .dd-node small{color:var(--mut);font-size:11px}
 .dd-still{animation:none}
 .dd-ico{display:block;width:32px;height:32px;margin:0 auto 8px;fill:none;stroke:var(--c);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .dd-link{flex:1;min-width:70px;height:2px;background:var(--line);position:relative}
 .dd-dashed{height:0;background:none;border-top:2px dashed var(--line)}
+.dd-link.dd-wireless{height:0;background:none;border-top:2px dotted var(--c)}
 .dd-link i{position:absolute;top:-11px;left:0;transform:translateX(-50%);font:600 11px ui-monospace,monospace;white-space:nowrap;background:var(--c);color:var(--bg);padding:2px 7px;border-radius:99px;opacity:0;animation:dd-go var(--t) var(--d,0s) infinite linear}
 .dd-link i:empty{top:-6px;padding:5px}
 .dd-back i{animation-name:dd-back}
-.dd-group{display:flex;align-items:center;position:relative;padding:26px 14px 14px;border:1px dashed var(--c);border-radius:14px}
+.dd-group{display:flex;align-items:center;position:relative;padding:26px 14px;border:1px dashed var(--c);border-radius:14px}
 .dd-group::before{content:attr(data-label);position:absolute;top:6px;left:12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--c)}
 .dd-badge{display:inline-block;margin-top:6px;font:600 11px ui-monospace,monospace;background:var(--line);padding:2px 8px;border-radius:99px}
 .dd-title{margin:0 0 18px;font-size:16px;font-weight:600}
 .dd-note{margin:18px 0 0;font-size:13px;color:var(--mut)}
 .dd-grid{display:flex;flex-wrap:wrap;gap:10px}
+.dd-col{display:flex;flex-direction:column;align-items:center}
+.dd-col>.dd-link{flex:none;width:2px;min-width:0;height:48px}
+.dd-col>.dd-link.dd-dashed{width:0;border-top:0;border-left:2px dashed var(--line)}
+.dd-col>.dd-link.dd-wireless{width:0;border-top:0;border-left:2px dotted var(--c)}
+.dd-col>.dd-link i{left:50%;transform:translate(-50%,-50%);animation-name:dd-down}
+.dd-col>.dd-link.dd-back i{animation-name:dd-up}
+.dd-branch,.dd-merge{display:flex;flex-direction:column;gap:14px;flex:1}
+.dd-branch>.dd-row,.dd-merge>.dd-row{position:relative}
+.dd-branch>.dd-row::before,.dd-merge>.dd-row::after{content:"";position:absolute;left:0;top:-7px;bottom:-7px;width:2px;background:var(--line)}
+.dd-merge>.dd-row::after{left:auto;right:0}
+.dd-branch>.dd-row:first-child::before,.dd-merge>.dd-row:first-child::after{top:calc(50% - 1px)}
+.dd-branch>.dd-row:last-child::before,.dd-merge>.dd-row:last-child::after{bottom:calc(50% - 1px)}
+.dd-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:12px;color:var(--mut)}
+.dd-key::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:3px;background:var(--c);vertical-align:-1px}
+.dd-key-wired::before,.dd-key-wireless::before{content:"";display:inline-block;width:18px;margin-right:6px;border-top:2px solid var(--line);vertical-align:3px}
+.dd-key-wireless::before{border-top:2px dotted var(--c)}
 /* ponytail: a loop holds 4 steps (each is 25% of --t). Longer chains need a keyframes copy with smaller percentages. */
 @keyframes dd-go{0%{left:0;opacity:0}3%,22%{opacity:1}25%,100%{left:100%;opacity:0}}
 @keyframes dd-back{0%{left:100%;opacity:0}3%,22%{opacity:1}25%,100%{left:0;opacity:0}}
+@keyframes dd-down{0%{top:0;opacity:0}3%,22%{opacity:1}25%,100%{top:100%;opacity:0}}
+@keyframes dd-up{0%{top:100%;opacity:0}3%,22%{opacity:1}25%,100%{top:0;opacity:0}}
 @keyframes dd-pulse{0%{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent)}12%,100%{border-color:var(--line);box-shadow:none}}
-@media (prefers-reduced-motion:reduce){.dd *{animation:none!important}.dd-link i{opacity:1;left:50%}}
+@media (prefers-reduced-motion:reduce){.dd *{animation:none!important}.dd-link i{opacity:1;left:50%}.dd-col>.dd-link i,.dd-col>.dd-link i:empty{top:50%}}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="dd-i-helm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="1.5"/><path d="M12 2v4.5M12 17.5V22M2 12h4.5M17.5 12H22M4.9 4.9l3.2 3.2M15.9 15.9l3.2 3.2M4.9 19.1l3.2-3.2M15.9 8.1l3.2-3.2"/></symbol>
@@ -47,4 +66,25 @@
   <symbol id="dd-i-ci-failed" viewBox="0 0 24 24"><circle cx="4.5" cy="12" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="19.5" cy="12" r="2.5" style="fill:var(--bad);stroke:var(--bad)"/><path d="M7 12h2.5M14.5 12H17"/></symbol>
   <symbol id="dd-i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></symbol>
   <symbol id="dd-i-desktop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8"/></symbol>
+  <symbol id="dd-i-router" viewBox="0 0 24 24"><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 13V6M17 13V6M7 16.5h.01M10.5 16.5h.01"/></symbol>
+  <symbol id="dd-i-firewall" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9.3h18M3 14.7h18M9 4v5.3M15 4v5.3M12 9.3v5.4M9 14.7V20M15 14.7V20"/></symbol>
+  <symbol id="dd-i-lb" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.5"/><circle cx="19.5" cy="5" r="2"/><circle cx="19.5" cy="12" r="2"/><circle cx="19.5" cy="19" r="2"/><path d="M7.5 12h10M11 12l6.8-5.8M11 12l6.8 5.8"/></symbol>
+  <symbol id="dd-i-gateway" viewBox="0 0 24 24"><path d="M4 21V10a8 8 0 0 1 16 0v11M2 21h20M9 15h6M13 13l2 2-2 2"/></symbol>
+  <symbol id="dd-i-antenna" viewBox="0 0 24 24"><circle cx="12" cy="8" r="1.5"/><path d="M12 9.5V21M8 21h8M8.5 5a4.5 4.5 0 0 0 0 6M15.5 5a4.5 4.5 0 0 1 0 6M5.5 3a8 8 0 0 0 0 10M18.5 3a8 8 0 0 1 0 10"/></symbol>
+  <symbol id="dd-i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></symbol>
+  <symbol id="dd-i-tablet" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M18.5 12h.01"/></symbol>
+  <symbol id="dd-i-sensor" viewBox="0 0 24 24"><rect x="4" y="10" width="10" height="10" rx="1.5"/><path d="M9 15h.01M14 6a4 4 0 0 1 4 4M14 2.5a7.5 7.5 0 0 1 7.5 7.5"/></symbol>
+  <symbol id="dd-i-pod" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="6"/><rect x="7" y="10" width="4" height="4" rx=".5"/><rect x="13" y="10" width="4" height="4" rx=".5"/></symbol>
+  <symbol id="dd-i-container" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="1"/><path d="M6.5 9v6M10 9v6M14 9v6M17.5 9v6"/></symbol>
+  <symbol id="dd-i-namespace" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="2 3"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></symbol>
+  <symbol id="dd-i-config" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 12h3M11 12h9M4 17h11M19 17h1"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="dd-i-secret" viewBox="0 0 24 24"><rect x="2.5" y="8" width="19" height="8" rx="2"/><path d="M7 12h.01M10.3 12h.01M13.7 12h.01M17 12h.01"/></symbol>
+  <symbol id="dd-i-queue" viewBox="0 0 24 24"><path d="M6 6h12M6 18h12M6 6a3 6 0 0 0 0 12M9 9.5v5M12 9.5v5"/><ellipse cx="18" cy="12" rx="3" ry="6"/></symbol>
+  <symbol id="dd-i-volume" viewBox="0 0 24 24"><path d="M3 14l3-8h12l3 8v4a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18z"/><path d="M3 14h18M17 17h.01M14 17h.01"/></symbol>
+  <symbol id="dd-i-package" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="12" rx="1.5"/><path d="M2.5 4.5h19V8h-19zM10 12h4"/></symbol>
+  <symbol id="dd-i-tag" viewBox="0 0 24 24"><path d="M3.5 3.5h8l9 9a1.5 1.5 0 0 1 0 2.1l-5.9 5.9a1.5 1.5 0 0 1-2.1 0l-9-9z"/><path d="M7.5 7.5h.01"/></symbol>
+  <symbol id="dd-i-rollback" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6L4 8.5M4 3.5v5h5"/></symbol>
+  <symbol id="dd-i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11M12 15v2"/></symbol>
+  <symbol id="dd-i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16.5 6.5l3 3M14 9l2 2"/></symbol>
+  <symbol id="dd-i-certificate" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M7 8.5h7M7 12h4M15 15.5V21l1.5-1.2L18 21v-5.5"/><circle cx="16.5" cy="13" r="2.5"/></symbol>
 </svg>
