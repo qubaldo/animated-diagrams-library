@@ -63,6 +63,7 @@ holds four steps.
 
 `helm` `k8s` `app` `ap` `server` `db` `cloud` `user` `registry` `git`
 `switch` `controller` `firmware` `ci` `ci-running` `ci-failed` `ci-completed`
+`laptop` `desktop`
 
 The icons are generic line drawings, not vendor logos.
 
