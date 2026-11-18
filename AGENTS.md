@@ -41,6 +41,9 @@ These come from where the output runs. Do not relax them.
 2. Follow the icon style:
    - Stroke only. Do not set `fill`, `stroke`, `stroke-width` or colours on the
      shapes; `.dd-ico` supplies them (1.6 width, round caps and joins).
+   - One exception: a shape that means "passed" or "healthy" may be filled green
+     with `style="fill:var(--ok);stroke:var(--ok)"` (see the last stage of `ci`).
+     Always go through `--ok`; it has a dark-card and a light-card value.
    - Stay inside a 2-unit margin: coordinates between 2 and 22.
    - Draw small dots as zero-length strokes: `M7 7.5h.01`.
    - Aim for 2 to 4 shapes. The icon renders at 32px and must read at a glance.
