@@ -62,7 +62,7 @@ holds four steps.
 `<svg class="dd-ico"><use href="#dd-i-NAME"/></svg>`
 
 `helm` `k8s` `app` `ap` `server` `db` `cloud` `user` `registry` `git`
-`switch` `controller` `firmware` `ci` `ci-running` `ci-failed`
+`switch` `controller` `firmware` `ci` `ci-running` `ci-failed` `ci-completed`
 
 The icons are generic line drawings, not vendor logos.
 

@@ -44,7 +44,8 @@ These come from where the output runs. Do not relax them.
    - One exception: a single shape may be filled to show status, with
      `style="fill:var(--ok);stroke:var(--ok)"`. Use `--ok` (green, passed or
      healthy), `--warn` (amber, running or pending) or `--bad` (red, failed).
-     See `ci`, `ci-running` and `ci-failed`. Always go through these variables;
+     See `ci`, `ci-running` and `ci-failed`. A variant may fill every shape when
+     the whole thing has that status (`ci-completed`). Always go through these variables;
      each has a dark-card and a light-card value. Name status variants
      `NAME-STATUS`.
    - Stay inside a 2-unit margin: coordinates between 2 and 22.
