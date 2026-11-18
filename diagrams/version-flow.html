@@ -1,0 +1,26 @@
+<!-- Version flow: Helm chart -> Kubernetes API -> App -> Access point -->
+<div class="dd">
+  <p class="dd-title">Where the version comes from</p>
+  <div class="dd-row">
+    <div class="dd-node dd-violet">
+      <svg class="dd-ico"><use href="#dd-i-helm"/></svg>
+      <b>Helm chart</b><small>Chart.yaml · appVersion</small>
+    </div>
+    <div class="dd-link"><i>v1.5.0</i></div>
+    <div class="dd-node" style="--d:1.5s">
+      <svg class="dd-ico"><use href="#dd-i-k8s"/></svg>
+      <b>Kubernetes API</b><small>labels on workloads</small>
+    </div>
+    <div class="dd-link" style="--d:1.5s"><i>v1.5.0</i></div>
+    <div class="dd-node dd-green" style="--d:3s">
+      <svg class="dd-ico"><use href="#dd-i-app"/></svg>
+      <b>App</b><small>reads deployed versions</small>
+    </div>
+    <div class="dd-link" style="--d:3s"><i>v1.5.0</i></div>
+    <div class="dd-node dd-amber" style="--d:4.5s">
+      <svg class="dd-ico"><use href="#dd-i-ap"/></svg>
+      <b>Access point</b><small>wireless hardware</small>
+    </div>
+  </div>
+  <p class="dd-note">The chart is the source of truth. Every other component reads the version from the one before it.</p>
+</div>

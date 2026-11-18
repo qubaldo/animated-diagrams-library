@@ -1,0 +1,41 @@
+<!-- animated-diagrams-library: styles and icons. Generated into every dist/*.html by build.sh. Edit library.html, not the copy. -->
+<style>
+.dd{--bg:#0f172a;--panel:#1e293b;--line:#334155;--fg:#e2e8f0;--mut:#94a3b8;--c:#22d3ee;--t:6s;font:14px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:28px 24px;border-radius:12px;overflow-x:auto;margin-bottom:16px}
+.dd-light{--bg:#f8fafc;--panel:#fff;--line:#cbd5e1;--fg:#0f172a;--mut:#64748b;--c:#0891b2;border:1px solid var(--line)}
+.dd-amber{--c:#f59e0b}.dd-green{--c:#22c55e}.dd-violet{--c:#a78bfa}.dd-red{--c:#f87171}
+.dd-light .dd-amber{--c:#b45309}.dd-light .dd-green{--c:#15803d}.dd-light .dd-violet{--c:#7c3aed}.dd-light .dd-red{--c:#dc2626}
+.dd-row{display:flex;align-items:center;min-width:max-content}
+.dd-node{flex:0 0 140px;box-sizing:border-box;padding:14px 8px;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--panel);animation:dd-pulse var(--t) var(--d,0s) infinite}
+.dd-node b{display:block}
+.dd-node small{color:var(--mut);font-size:11px}
+.dd-still{animation:none}
+.dd-ico{display:block;width:32px;height:32px;margin:0 auto 8px;fill:none;stroke:var(--c);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.dd-link{flex:1;min-width:70px;height:2px;background:var(--line);position:relative}
+.dd-dashed{height:0;background:none;border-top:2px dashed var(--line)}
+.dd-link i{position:absolute;top:-11px;left:0;transform:translateX(-50%);font:600 11px ui-monospace,monospace;white-space:nowrap;background:var(--c);color:var(--bg);padding:2px 7px;border-radius:99px;opacity:0;animation:dd-go var(--t) var(--d,0s) infinite linear}
+.dd-link i:empty{top:-6px;padding:5px}
+.dd-back i{animation-name:dd-back}
+.dd-group{display:flex;align-items:center;position:relative;padding:26px 14px 14px;border:1px dashed var(--c);border-radius:14px}
+.dd-group::before{content:attr(data-label);position:absolute;top:6px;left:12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--c)}
+.dd-badge{display:inline-block;margin-top:6px;font:600 11px ui-monospace,monospace;background:var(--line);padding:2px 8px;border-radius:99px}
+.dd-title{margin:0 0 18px;font-size:16px;font-weight:600}
+.dd-note{margin:18px 0 0;font-size:13px;color:var(--mut)}
+.dd-grid{display:flex;flex-wrap:wrap;gap:10px}
+/* ponytail: a loop holds 4 steps (each is 25% of --t). Longer chains need a keyframes copy with smaller percentages. */
+@keyframes dd-go{0%{left:0;opacity:0}3%,22%{opacity:1}25%,100%{left:100%;opacity:0}}
+@keyframes dd-back{0%{left:100%;opacity:0}3%,22%{opacity:1}25%,100%{left:0;opacity:0}}
+@keyframes dd-pulse{0%{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent)}12%,100%{border-color:var(--line);box-shadow:none}}
+@media (prefers-reduced-motion:reduce){.dd *{animation:none!important}.dd-link i{opacity:1;left:50%}}
+</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dd-i-helm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="1.5"/><path d="M12 2v4.5M12 17.5V22M2 12h4.5M17.5 12H22M4.9 4.9l3.2 3.2M15.9 15.9l3.2 3.2M4.9 19.1l3.2-3.2M15.9 8.1l3.2-3.2"/></symbol>
+  <symbol id="dd-i-k8s" viewBox="0 0 24 24"><path d="M12 2l8.7 5v10L12 22l-8.7-5V7z"/><circle cx="12" cy="12" r="2.5"/><path d="M12 5.5v4M12 14.5v4M6.4 8.8l3.4 2M14.2 13.2l3.4 2M6.4 15.2l3.4-2M14.2 10.8l3.4-2"/></symbol>
+  <symbol id="dd-i-app" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01M7 13h6M7 16h10"/></symbol>
+  <symbol id="dd-i-ap" viewBox="0 0 24 24"><path d="M5.5 8a9.5 9.5 0 0 1 13 0M8.5 11a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="13.5" r=".8"/><rect x="4" y="17" width="16" height="4" rx="2"/><path d="M7.5 19h.01M10.5 19h.01"/></symbol>
+  <symbol id="dd-i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></symbol>
+  <symbol id="dd-i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+  <symbol id="dd-i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9A6 6 0 0 1 18 10.6a4 4 0 0 1-.5 7.9z"/></symbol>
+  <symbol id="dd-i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+  <symbol id="dd-i-registry" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="dd-i-git" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M18 10c0 4-12 3-12 7"/></symbol>
+</svg>
