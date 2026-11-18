@@ -48,7 +48,7 @@ Create `diagrams/my-diagram.html` and run `./build.sh`:
 | `dd-link` | Connector. `<i>label</i>` inside gives a travelling pill, `<i></i>` a dot, nothing a static line. |
 | `dd-back` | On a link: the pill travels right to left. |
 | `dd-dashed` | On a link: dashed line. |
-| `dd-wireless` | On a link: dotted line in the accent colour, for a wireless connection. |
+| `dd-wireless` | On a link: dotted line in the accent colour whose dots flow continuously, for a wireless connection. `dd-back` reverses the flow, `dd-still` stops it. |
 | `dd-branch` | One node feeding several. Holds one `dd-row` per branch, each starting with a link. |
 | `dd-merge` | Several feeding one. Holds one `dd-row` per branch, each ending with a link. Combine with `dd-branch` to fan out and back in. |
 | `dd-group` | Dashed boundary around nodes. `data-label="..."` names it. |

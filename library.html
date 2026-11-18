@@ -12,7 +12,9 @@
 .dd-ico{display:block;width:32px;height:32px;margin:0 auto 8px;fill:none;stroke:var(--c);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .dd-link{flex:1;min-width:70px;height:2px;background:var(--line);position:relative}
 .dd-dashed{height:0;background:none;border-top:2px dashed var(--line)}
-.dd-link.dd-wireless{height:0;background:none;border-top:2px dotted var(--c)}
+.dd-link.dd-wireless{background:linear-gradient(90deg,var(--c) 2px,transparent 0) 0 0/6px 2px;animation:dd-flow .5s linear infinite}
+.dd-link.dd-wireless.dd-back{animation-direction:reverse}
+.dd-link.dd-still{animation:none}
 .dd-link i{position:absolute;top:-11px;left:0;transform:translateX(-50%);font:600 11px ui-monospace,monospace;white-space:nowrap;background:var(--c);color:var(--bg);padding:2px 7px;border-radius:99px;opacity:0;animation:dd-go var(--t) var(--d,0s) infinite linear}
 .dd-link i:empty{top:-6px;padding:5px}
 .dd-back i{animation-name:dd-back}
@@ -25,7 +27,7 @@
 .dd-col{display:flex;flex-direction:column;align-items:center}
 .dd-col>.dd-link{flex:none;width:2px;min-width:0;height:48px}
 .dd-col>.dd-link.dd-dashed{width:0;border-top:0;border-left:2px dashed var(--line)}
-.dd-col>.dd-link.dd-wireless{width:0;border-top:0;border-left:2px dotted var(--c)}
+.dd-col>.dd-link.dd-wireless{background:linear-gradient(180deg,var(--c) 2px,transparent 0) 0 0/2px 6px;animation-name:dd-flow-v}
 .dd-col>.dd-link i{left:50%;transform:translate(-50%,-50%);animation-name:dd-down}
 .dd-col>.dd-link.dd-back i{animation-name:dd-up}
 .dd-branch,.dd-merge{display:flex;flex-direction:column;gap:14px;flex:1}
@@ -43,6 +45,8 @@
 @keyframes dd-back{0%{left:100%;opacity:0}3%,22%{opacity:1}25%,100%{left:0;opacity:0}}
 @keyframes dd-down{0%{top:0;opacity:0}3%,22%{opacity:1}25%,100%{top:100%;opacity:0}}
 @keyframes dd-up{0%{top:100%;opacity:0}3%,22%{opacity:1}25%,100%{top:0;opacity:0}}
+@keyframes dd-flow{to{background-position:6px 0}}
+@keyframes dd-flow-v{to{background-position:0 6px}}
 @keyframes dd-pulse{0%{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent)}12%,100%{border-color:var(--line);box-shadow:none}}
 @media (prefers-reduced-motion:reduce){.dd *{animation:none!important}.dd-link i{opacity:1;left:50%}.dd-col>.dd-link i,.dd-col>.dd-link i:empty{top:50%}}
 </style>

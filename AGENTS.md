@@ -82,6 +82,9 @@ Likely useful next: file, clock, alert, globe, mail, terminal, chart.
 
 ## Timing model and its limit
 
+`dd-flow` (the moving dots on `dd-wireless` links) runs continuously and is not
+part of the step sequence. Everything below is about the sequenced animations.
+
 `dd-go`, `dd-back` and `dd-pulse` are active for the first 25% of the loop
 `--t`, then idle. With the default 6s loop that gives four 1.5s steps. A chain
 with more than four steps does not fit: do not paper over it by shortening
