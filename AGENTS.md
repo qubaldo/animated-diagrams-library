@@ -21,6 +21,9 @@ These come from where the output runs. Do not relax them.
   `--fg`, `--mut`, `--c`), never hard-coded colours.
 - **Respect `prefers-reduced-motion`.** New animations must be covered by the
   existing media query and leave a readable static state.
+- **Static state must be readable.** The reduced-motion and print media query
+  is also what PDF export shows. Anything that is invisible until animated
+  needs a parked position there.
 - **No build dependencies.** `build.sh` is POSIX shell. Do not add npm, a
   bundler or a framework.
 
@@ -31,7 +34,7 @@ These come from where the output runs. Do not relax them.
 | `library.html` | The only source of styles and icons: one `<style>` and one SVG sprite. |
 | `diagrams/*.html` | One diagram per file, markup only. No `<style>`, no sprite. |
 | `diagrams/catalog.html` | Shows every icon and every component. Keep it complete. |
-| `build.sh` | Checks icon references, then writes `dist/<name>.html` = library + diagram. |
+| `build.sh` | Checks icons and descriptions, then writes `dist/<name>.html` = styles + the icons that diagram uses + the diagram. |
 | `dist/` | Generated and git-ignored. These are the files people paste. |
 
 ## Adding an icon
@@ -72,7 +75,9 @@ Likely useful next: file, clock, alert, globe, mail, terminal, chart.
 
 ## Adding a diagram
 
-1. Create `diagrams/NAME.html` with a single `<div class="dd">` root. Start
+1. Create `diagrams/NAME.html` with a single `<div class="dd" role="img"
+   aria-label="...">` root. The label is one or two sentences saying what the
+   diagram shows, for screen readers. Start
    from `diagrams/version-flow.html`, or `diagrams/network-topology.html` for
    branching.
 2. Reference icons with `<svg class="dd-ico"><use href="#dd-i-NAME"/></svg>`.
@@ -85,16 +90,19 @@ Likely useful next: file, clock, alert, globe, mail, terminal, chart.
 `dd-flow` (the moving dots on `dd-wireless` links) runs continuously and is not
 part of the step sequence. Everything below is about the sequenced animations.
 
-`dd-go`, `dd-back` and `dd-pulse` are active for the first 25% of the loop
-`--t`, then idle. With the default 6s loop that gives four 1.5s steps. A chain
-with more than four steps does not fit: do not paper over it by shortening
-delays. Add a second set of keyframes with smaller percentages and a modifier
-class that selects it, then document it.
+The sequenced animations (`dd-go`, `dd-back`, `dd-down`, `dd-up`, `dd-pulse`)
+are active for one step, then idle for the rest of the loop. A step is 1.5s.
+The default loop is 4 steps (`--t:6s`); `dd-steps-6` and `dd-steps-8` on the
+`.dd` root give 6 or 8. They work by pointing the `--go`, `--bk`, `--dn`,
+`--up` and `--pu` variables at numbered keyframes, so always reference
+keyframes through those variables, never by name. A `dd-reqres` link uses two
+steps. If a chain needs more than 8 steps, add another numbered keyframe set
+and `dd-steps-N` rule the same way; do not shorten delays to squeeze it in.
 
 ## Before you finish
 
-- `./build.sh` exits 0. It fails on an icon that is used but not defined, or
-  defined but missing from the catalog.
+- `./build.sh` exits 0. It fails on an icon that is used but not defined, an
+  icon missing from the catalog, or a diagram root without a description.
 - You opened the affected `dist/` files in a browser, or you say plainly that
   you did not.
 - README tables and lists match what is in `library.html`.

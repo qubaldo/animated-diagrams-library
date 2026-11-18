@@ -1,5 +1,5 @@
 <!-- Catalog: every icon and every component, on both cards. build.sh fails if an icon is missing from here. -->
-<div class="dd">
+<div class="dd" role="img" aria-label="Every icon in the library.">
   <p class="dd-title">Icons</p>
   <div class="dd-grid">
     <div class="dd-node dd-still"><svg class="dd-ico"><use href="#dd-i-helm"/></svg><b>helm</b></div>
@@ -45,7 +45,7 @@
   </div>
 </div>
 
-<div class="dd dd-light">
+<div class="dd dd-light" role="img" aria-label="Sample of nodes, links, a group and badges on the light card.">
   <p class="dd-title">Components on the light card</p>
   <div class="dd-row">
     <div class="dd-node dd-still">
@@ -78,7 +78,7 @@
   <p class="dd-note">dd-note: a caption under the diagram.</p>
 </div>
 
-<div class="dd">
+<div class="dd" role="img" aria-label="Sample vertical flow from pipeline to package to cluster to access point.">
   <p class="dd-title">Vertical flow (dd-col)</p>
   <div class="dd-col">
     <div class="dd-node"><svg class="dd-ico"><use href="#dd-i-ci"/></svg><b>Pipeline</b><small>builds the chart</small></div>
@@ -91,7 +91,7 @@
   </div>
 </div>
 
-<div class="dd dd-light">
+<div class="dd dd-light" role="img" aria-label="Sample of a load balancer branching to three servers that merge into one database.">
   <p class="dd-title">Branch, merge and legend</p>
   <div class="dd-row">
     <div class="dd-node"><svg class="dd-ico"><use href="#dd-i-lb"/></svg><b>dd-branch</b><small>fans out</small></div>
@@ -111,4 +111,33 @@
     <span class="dd-key-wired">dd-key-wired</span>
     <span class="dd-key-wireless">dd-key-wireless</span>
   </div>
+</div>
+
+<div class="dd" role="img" aria-label="Sample of node states and two-way links: highlighted, degraded and down nodes, a request and response link, and a link with traffic in both directions.">
+  <p class="dd-title">States and two-way links</p>
+  <div class="dd-row">
+    <div class="dd-node dd-highlight"><svg class="dd-ico"><use href="#dd-i-app"/></svg><b>dd-highlight</b><small>always lit</small></div>
+    <div class="dd-link dd-reqres"><i>GET /version</i><i>v1.5.0</i></div>
+    <div class="dd-node" style="--d:1.5s"><svg class="dd-ico"><use href="#dd-i-k8s"/></svg><b>dd-reqres</b><small>request, then response</small></div>
+    <div class="dd-link dd-both" style="--d:3s"><i></i><i></i></div>
+    <div class="dd-node dd-degraded"><svg class="dd-ico"><use href="#dd-i-server"/></svg><b>dd-degraded</b><small>after a dd-both link</small></div>
+    <div class="dd-link dd-dashed"></div>
+    <div class="dd-node dd-down"><svg class="dd-ico"><use href="#dd-i-db"/></svg><b>dd-down</b><small>unreachable</small></div>
+  </div>
+</div>
+
+<div class="dd dd-light dd-steps-6" role="img" aria-label="Sample six-step loop: git to pipeline to registry to cluster, then an upgrade request to the access point and its acknowledgement.">
+  <p class="dd-title">Six steps (dd-steps-6)</p>
+  <div class="dd-row">
+    <div class="dd-node"><svg class="dd-ico"><use href="#dd-i-git"/></svg><b>Commit</b></div>
+    <div class="dd-link"><i></i></div>
+    <div class="dd-node" style="--d:1.5s"><svg class="dd-ico"><use href="#dd-i-ci"/></svg><b>Pipeline</b></div>
+    <div class="dd-link" style="--d:1.5s"><i></i></div>
+    <div class="dd-node" style="--d:3s"><svg class="dd-ico"><use href="#dd-i-registry"/></svg><b>Registry</b></div>
+    <div class="dd-link" style="--d:3s"><i>v1.5.0</i></div>
+    <div class="dd-node" style="--d:4.5s"><svg class="dd-ico"><use href="#dd-i-k8s"/></svg><b>Cluster</b></div>
+    <div class="dd-link dd-reqres" style="--d:4.5s"><i>upgrade</i><i>ack</i></div>
+    <div class="dd-node dd-amber" style="--d:6s"><svg class="dd-ico"><use href="#dd-i-ap"/></svg><b>Access point</b></div>
+  </div>
+  <p class="dd-note">Steps fire at 0s, 1.5s, 3s, 4.5s, 6s and 7.5s. dd-steps-8 works the same with eight.</p>
 </div>

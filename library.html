@@ -1,23 +1,30 @@
 <!-- animated-diagrams-library: styles and icons. Generated into every dist/*.html by build.sh. Edit library.html, not the copy. -->
 <style>
-.dd{--bg:#0f172a;--panel:#1e293b;--line:#334155;--fg:#e2e8f0;--mut:#94a3b8;--c:#22d3ee;--ok:#22c55e;--warn:#f59e0b;--bad:#f87171;--t:6s;font:14px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:28px 24px;border-radius:12px;overflow-x:auto;margin-bottom:16px}
+.dd{--bg:#0f172a;--panel:#1e293b;--line:#334155;--fg:#e2e8f0;--mut:#94a3b8;--c:#22d3ee;--ok:#22c55e;--warn:#f59e0b;--bad:#f87171;--t:6s;--n:4;--go:dd-go;--bk:dd-back;--dn:dd-down;--up:dd-up;--pu:dd-pulse;print-color-adjust:exact;-webkit-print-color-adjust:exact;font:14px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--fg);padding:28px 24px;border-radius:12px;overflow-x:auto;margin-bottom:16px}
 .dd-light{--bg:#f8fafc;--panel:#fff;--line:#cbd5e1;--fg:#0f172a;--mut:#64748b;--c:#0891b2;--ok:#15803d;--warn:#b45309;--bad:#dc2626;border:1px solid var(--line)}
 .dd-amber{--c:#f59e0b}.dd-green{--c:#22c55e}.dd-violet{--c:#a78bfa}.dd-red{--c:#f87171}
 .dd-light .dd-amber{--c:#b45309}.dd-light .dd-green{--c:#15803d}.dd-light .dd-violet{--c:#7c3aed}.dd-light .dd-red{--c:#dc2626}
+.dd-steps-6{--n:6;--t:9s;--go:dd-go6;--bk:dd-back6;--dn:dd-down6;--up:dd-up6;--pu:dd-pulse6}.dd-steps-8{--n:8;--t:12s;--go:dd-go8;--bk:dd-back8;--dn:dd-down8;--up:dd-up8;--pu:dd-pulse8}
 .dd-row{display:flex;align-items:center;min-width:max-content}
-.dd-node{flex:none;width:140px;box-sizing:border-box;padding:14px 8px;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--panel);animation:dd-pulse var(--t) var(--d,0s) infinite}
+.dd-node{flex:none;width:140px;box-sizing:border-box;padding:14px 8px;text-align:center;border:1px solid var(--line);border-radius:10px;background:var(--panel);animation:var(--pu) var(--t) var(--d,0s) infinite}
 .dd-node b{display:block}
 .dd-node small{color:var(--mut);font-size:11px}
 .dd-still{animation:none}
+.dd-node.dd-highlight{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent);animation:none}
+.dd-node.dd-degraded{--c:var(--warn);border-color:var(--warn);animation:none}
+.dd-node.dd-down{--c:var(--bad);border:1px dashed var(--bad);opacity:.55;animation:none}
 .dd-ico{display:block;width:32px;height:32px;margin:0 auto 8px;fill:none;stroke:var(--c);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .dd-link{flex:1;min-width:70px;height:2px;background:var(--line);position:relative}
 .dd-dashed{height:0;background:none;border-top:2px dashed var(--line)}
 .dd-link.dd-wireless{background:linear-gradient(90deg,var(--c) 2px,transparent 0) 0 0/6px 2px;animation:dd-flow .5s linear infinite}
 .dd-link.dd-wireless.dd-back{animation-direction:reverse}
 .dd-link.dd-still{animation:none}
-.dd-link i{position:absolute;top:-11px;left:0;transform:translateX(-50%);font:600 11px ui-monospace,monospace;white-space:nowrap;background:var(--c);color:var(--bg);padding:2px 7px;border-radius:99px;opacity:0;animation:dd-go var(--t) var(--d,0s) infinite linear}
-.dd-link i:empty{top:-6px;padding:5px}
-.dd-back i{animation-name:dd-back}
+.dd-link i{position:absolute;top:-11px;left:0;transform:translateX(-50%);font:600 11px ui-monospace,monospace;white-space:nowrap;background:var(--c);color:var(--bg);padding:2px 7px;border-radius:99px;opacity:0;animation:var(--go) var(--t) var(--d,0s) infinite linear}
+.dd-link i:empty{top:-4px;padding:5px}
+.dd-back i{animation-name:var(--bk)}
+.dd-both i+i{animation-name:var(--bk)}
+.dd-both i+i:not(:empty){top:6px}
+.dd-reqres i+i{animation-name:var(--bk);animation-delay:calc(var(--d,0s) + var(--t)/var(--n))}
 .dd-group{display:flex;align-items:center;position:relative;padding:26px 14px;border:1px dashed var(--c);border-radius:14px}
 .dd-group::before{content:attr(data-label);position:absolute;top:6px;left:12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--c)}
 .dd-badge{display:inline-block;margin-top:6px;font:600 11px ui-monospace,monospace;background:var(--line);padding:2px 8px;border-radius:99px}
@@ -28,8 +35,8 @@
 .dd-col>.dd-link{flex:none;width:2px;min-width:0;height:48px}
 .dd-col>.dd-link.dd-dashed{width:0;border-top:0;border-left:2px dashed var(--line)}
 .dd-col>.dd-link.dd-wireless{background:linear-gradient(180deg,var(--c) 2px,transparent 0) 0 0/2px 6px;animation-name:dd-flow-v}
-.dd-col>.dd-link i{left:50%;transform:translate(-50%,-50%);animation-name:dd-down}
-.dd-col>.dd-link.dd-back i{animation-name:dd-up}
+.dd-col>.dd-link i{left:50%;transform:translate(-50%,-50%);animation-name:var(--dn)}
+.dd-col>.dd-link.dd-back i,.dd-col>.dd-link.dd-both i+i,.dd-col>.dd-link.dd-reqres i+i{animation-name:var(--up)}
 .dd-branch,.dd-merge{display:flex;flex-direction:column;gap:14px;flex:1}
 .dd-branch>.dd-row,.dd-merge>.dd-row{position:relative}
 .dd-branch>.dd-row::before,.dd-merge>.dd-row::after{content:"";position:absolute;left:0;top:-7px;bottom:-7px;width:2px;background:var(--line)}
@@ -40,15 +47,29 @@
 .dd-key::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:3px;background:var(--c);vertical-align:-1px}
 .dd-key-wired::before,.dd-key-wireless::before{content:"";display:inline-block;width:18px;margin-right:6px;border-top:2px solid var(--line);vertical-align:3px}
 .dd-key-wireless::before{border-top:2px dotted var(--c)}
-/* ponytail: a loop holds 4 steps (each is 25% of --t). Longer chains need a keyframes copy with smaller percentages. */
+/* A loop holds 4 steps, each 25% of --t. dd-steps-6 and dd-steps-8 switch to the numbered keyframes below.
+   ponytail: beyond 8 steps, add another numbered set and a dd-steps-N rule the same way. */
 @keyframes dd-go{0%{left:0;opacity:0}3%,22%{opacity:1}25%,100%{left:100%;opacity:0}}
 @keyframes dd-back{0%{left:100%;opacity:0}3%,22%{opacity:1}25%,100%{left:0;opacity:0}}
 @keyframes dd-down{0%{top:0;opacity:0}3%,22%{opacity:1}25%,100%{top:100%;opacity:0}}
 @keyframes dd-up{0%{top:100%;opacity:0}3%,22%{opacity:1}25%,100%{top:0;opacity:0}}
+@keyframes dd-go6{0%{left:0;opacity:0}2%,14.667%{opacity:1}16.667%,100%{left:100%;opacity:0}}
+@keyframes dd-back6{0%{left:100%;opacity:0}2%,14.667%{opacity:1}16.667%,100%{left:0;opacity:0}}
+@keyframes dd-down6{0%{top:0;opacity:0}2%,14.667%{opacity:1}16.667%,100%{top:100%;opacity:0}}
+@keyframes dd-up6{0%{top:100%;opacity:0}2%,14.667%{opacity:1}16.667%,100%{top:0;opacity:0}}
+@keyframes dd-pulse6{0%{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent)}8%,100%{border-color:var(--line);box-shadow:none}}
+@keyframes dd-go8{0%{left:0;opacity:0}1.5%,11%{opacity:1}12.5%,100%{left:100%;opacity:0}}
+@keyframes dd-back8{0%{left:100%;opacity:0}1.5%,11%{opacity:1}12.5%,100%{left:0;opacity:0}}
+@keyframes dd-down8{0%{top:0;opacity:0}1.5%,11%{opacity:1}12.5%,100%{top:100%;opacity:0}}
+@keyframes dd-up8{0%{top:100%;opacity:0}1.5%,11%{opacity:1}12.5%,100%{top:0;opacity:0}}
+@keyframes dd-pulse8{0%{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent)}6%,100%{border-color:var(--line);box-shadow:none}}
 @keyframes dd-flow{to{background-position:6px 0}}
 @keyframes dd-flow-v{to{background-position:0 6px}}
 @keyframes dd-pulse{0%{border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 25%,transparent)}12%,100%{border-color:var(--line);box-shadow:none}}
-@media (prefers-reduced-motion:reduce){.dd *{animation:none!important}.dd-link i{opacity:1;left:50%}.dd-col>.dd-link i,.dd-col>.dd-link i:empty{top:50%}}
+/* Static state for reduced motion, print and PDF export: pills park mid-link so labels stay readable. */
+@media (prefers-reduced-motion:reduce),print{.dd *{animation:none!important}.dd-link i{opacity:1;left:50%}.dd-link i+i{top:6px}.dd-link i+i:empty{display:none}.dd-col>.dd-link i,.dd-col>.dd-link i:empty{top:50%}.dd-col>.dd-link i+i{transform:translate(-50%,60%)}}
+/* ponytail: print lets rows shrink to the page; a row with more nodes than fit is still clipped. */
+@media print{.dd{overflow:visible}.dd-row{min-width:0}.dd-link{min-width:20px}}
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="dd-i-helm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="1.5"/><path d="M12 2v4.5M12 17.5V22M2 12h4.5M17.5 12H22M4.9 4.9l3.2 3.2M15.9 15.9l3.2 3.2M4.9 19.1l3.2-3.2M15.9 8.1l3.2-3.2"/></symbol>
