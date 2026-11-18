@@ -52,9 +52,8 @@ These come from where the output runs. Do not relax them.
    icon next to the others on both cards. An icon is not done until someone
    has looked at it rendered; path data that seems right often is not.
 
-Icons people have asked for next: switch, controller, firmware, CI pipeline.
-Likely useful after that: router, phone, laptop, queue, lock, key, load
-balancer, gateway, sensor, antenna, file, clock.
+Likely useful next: router, phone, laptop, queue, lock, key, load balancer,
+gateway, sensor, antenna, file, clock.
 
 ## Adding a component
 
